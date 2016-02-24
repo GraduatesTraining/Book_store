@@ -1,0 +1,29 @@
+<!DOCTYPE html><html ng-app="bookApp"><head><meta charset="NaN"><title>Angular Store</title><link rel="stylesheet" href="css/bootstrap.min.css"><link rel="stylesheet" href="css/bookStore.css"></head><body ng-controller="bookCtrl as myBook"><!--show all the books--><div class="container"><h1>My Books</h1><div class="row"><br><input type="text" ng-model="search" placeholder="Search here..." class="form-control"><br></div></div><div ng-repeat="y in myBook.book | filter:search | orderBy:'price' " class="container"> <h3>{{y.name}}</h3><hr><div class="row"><div class="col-sm-3"><section class="panel"><div style="text-align:center" class="panel-body"><img ng-src="{{y.image}}" class="img-responsive"></div></section></div><div class="col-sm-9"><section class="panel"><div class="panel-body">{{ myBook.book.author }}<br><br><strong>Type: {{y.type}}</strong><br>{{ y.price | currency }}<br><br><button ng-click="" ng-show="" class="btn btn-primary">Show comentaries </button></div></section></div><div ng-controller="commentCtrl as myComment" class="row"><div class="col-sm-6"><section class="panel"><div class="panel-body"><h3>Comments:</h3><hr><!--for each book show all its comments--><div ng-repeat="x in myComment.commentsBook"></div><!--div(ng-repeat="x in myComment.comments")p Person: {{x.nameComment}}
+p Comment: {{x.comment}}
+button(class="btn btn-primary" ng-click="myComment.editComment(x.id)") Edit
+br
+
+hr-->{{myComment.commentsBook.comment}}            <div ng-show="myComment.showButton" class="form-group"><br><p>Name:</p><input type="text" ng-model="myComment.loadComments().nameComment" placeholder="Edit your name" class="form-control"><br><p>Comment:</p><input type="text" ng-model="myComment.loadComments().comment" placeholder="Edit you comment" class="form-control"><br><button ng-click="myComment.saveComment()" class="btn btn-primary">Save </button>&nbsp<button ng-click="myComment.cancelComment()" class="btn btn-danger">Cancel</button></div></div></section></div></div></div><!--                div.row(ng-controller="")
+    div.col-sm-3
+        section.panel
+            div.panel-body
+
+                h4 ***New comment
+                p Name:
+                input.form-control(type="text" ng-model="" placeholder="Your name")
+                br
+                p Comment:
+                input.form-control(type="text" ng-model="" placeholder="Your book's comment")
+                br
+                button(class="btn btn-primary" ng-click="") Save
+                button(class="btn btn-danger" ng-click="") Cancel
+            
+        
+            
+
+
+            
+
+
+
+--></div><script src="js/angular.min.js"></script><script src="js/app.js"></script></body></html>

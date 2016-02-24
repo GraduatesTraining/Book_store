@@ -1,0 +1,108 @@
+doctype html
+html(ng-app="bookApp")
+    head
+        meta(charset=utf-8)
+        title Angular Store
+        link(rel="stylesheet" href="css/bootstrap.min.css")
+        link(rel="stylesheet" href="css/bookStore.css")
+
+       
+    
+
+    body(ng-controller="bookCtrl as myBook")
+        //show all the books
+        .container
+            h1 My Books
+            .row
+                br
+                input.form-control(type="text" ng-model="search" placeholder="Search here...")
+                br
+        div(class="container" ng-repeat="y in myBook.book | filter:search | orderBy:'price' ") 
+            h3 {{y.name}}
+            hr
+            div.row
+                div(class="col-sm-3")
+                    section.panel
+                        div.panel-body(style="text-align:center")
+                            img.img-responsive(ng-src="{{y.image}}")
+
+
+                div.col-sm-9
+                    section.panel
+                        div.panel-body
+                            {{ myBook.book.author }}
+                            br
+                            br
+                            strong Type: {{y.type}}
+                            br
+                            {{ y.price | currency }}
+                            br
+                            br
+                            button(class="btn btn-primary" ng-click="" ng-show="") Show comentaries 
+                            
+                
+                .row(ng-controller="commentCtrl as myComment")
+
+                    div.col-sm-6
+                        section.panel
+                            div.panel-body
+                                h3 Comments:
+                                hr
+                                //for each book show all its comments
+                                div(ng-repeat="x in myComment.commentsBook")
+                                
+                                //div(ng-repeat="x in myComment.comments")
+                                    p Person: {{x.nameComment}}
+                                    p Comment: {{x.comment}}
+                                    button(class="btn btn-primary" ng-click="myComment.editComment(x.id)") Edit
+                                    br
+                                    
+                                    hr
+                                {{myComment.commentsBook.comment}}            
+                                div.form-group(ng-show="myComment.showButton")
+                                    br
+                                    p Name:
+                                    input.form-control(type="text" ng-model="myComment.loadComments().nameComment" placeholder="Edit your name")
+                                    br
+                                    p Comment:
+                                    input.form-control(type="text" ng-model="myComment.loadComments().comment" placeholder="Edit you comment")
+                                    br
+
+                                    button(class="btn btn-primary" ng-click="myComment.saveComment()") Save 
+                                    &nbsp
+                                    button(class="btn btn-danger" ng-click="myComment.cancelComment()") Cancel
+
+                            
+                            
+            //                
+                div.row(ng-controller="")
+                    div.col-sm-3
+                        section.panel
+                            div.panel-body
+
+                                h4 ***New comment
+                                p Name:
+                                input.form-control(type="text" ng-model="" placeholder="Your name")
+                                br
+                                p Comment:
+                                input.form-control(type="text" ng-model="" placeholder="Your book's comment")
+                                br
+                                button(class="btn btn-primary" ng-click="") Save
+                                button(class="btn btn-danger" ng-click="") Cancel
+                            
+                        
+                            
+            
+ 
+                            
+               
+
+
+
+        script(src="js/angular.min.js")
+        script(src="js/app.js")
+
+    
+    
+    
+
